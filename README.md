@@ -15,3 +15,7 @@ https://code4fukui.github.io/ar-aquarium/
 - url: fish data file (.csv or JSON) default: ./fishes.csv
 - nfishes: initial count of fishes default: 30
 - dtrefresh: during time to refresh (sec) default: 0 (no refresh mode)
+
+## fish image license
+
+- CC BY Code for FUKUI

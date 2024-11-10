@@ -84,7 +84,7 @@ const makeFish = async (options) => {
 	};
 	// 初期位置
 	const basey = -1.2;
-	mesh.position.y = options.type == "walk" ? basey : Math.random() * 1.5 + basey;// + .5;
+	mesh.position.y = options.type == "walk" ? basey : Math.random() * 2.5 + basey;
 	mesh.r = Math.random() * 3 + .5;
 	mesh.th = Math.random() * Math.PI * 2;
 	mesh.data = options;

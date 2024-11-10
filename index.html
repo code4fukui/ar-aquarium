@@ -29,7 +29,9 @@ const fetchFishes = async () => {
 		}
 	};
 	const list = await fetchList();
-	return list.filter(i => !i.enabled || i.enabled == "1");
+	const res = list.filter(i => i.enabled === undefined || i.enabled == "1");
+	console.log(res.length);
+	return res;
 };
 
 const loadTextureAsync = async (url) => {
@@ -93,6 +95,7 @@ const makeFish = async (options) => {
 if (dtrefresh) {
 	setInterval(async () => {
 		await updateFishes();
+		console.log("updated", fishes.length);
 	}, dtrefresh * 1000);
 }
 
@@ -112,7 +115,7 @@ const updateFishes = async () => {
 	}
 	for (const d of fishesdata) {
 		if (!fishes.find(i => i && i.data.file == d.file)) {
-			const fish = makeFish(d);
+			const fish = await makeFish(d);
 			scene.add(fish);
 			const spc = fishes.find(i => !i);
 			if (spc) {
@@ -144,7 +147,7 @@ const t0 = performance.now();
 renderer.setAnimationLoop(() => {
 	const t = t0 - performance.now();
 	for (const fish of fishes) {
-		if (fish) {
+		if (fish && fish.animate) {
 			fish.animate(t);
 		}
 	}

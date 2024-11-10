@@ -21,14 +21,14 @@ const nfishes = params.get("nfishes") ?? 30;
 const dtrefresh = params.get("dtrefresh") ?? 0;
 
 const fetchFishes = async () => {
-	const fetch = async () => {
+	const fetchList = async () => {
 		if (url.endsWith(".csv")) {
 			return await CSV.fetchJSON(url + "?" + new Date().getTime());
 		} else { // json
 			return await (await fetch(url)).json();
 		}
 	};
-	const list = await fetch();
+	const list = await fetchList();
 	return list.filter(i => !i.enabled || i.enabled == "1");
 };
 

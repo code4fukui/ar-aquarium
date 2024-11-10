@@ -9,6 +9,7 @@ https://code4fukui.github.io/ar-aquarium/
 - freq: wave frequency
 - amp: wave amplitude
 - speed: speed of fish
+- enabled: 1 or 0
 
 ## params
 
